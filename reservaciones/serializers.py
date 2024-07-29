@@ -21,3 +21,7 @@ class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cliente
         fields = '__all__'
+
+class ReporteReservacionesSerializer(serializers.Serializer):
+    cantidad = serializers.IntegerField()
+    reservaciones = ReservacionSerializer(many=True)

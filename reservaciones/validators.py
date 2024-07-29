@@ -1,16 +1,11 @@
 from django.core.exceptions import ValidationError
+import re
 
-def validar_par (value):
-    if value % 2 != 0:
-        # %( )s para poner un valor
-        raise ValidationError("%(value)s no es un numero par", params={'value':value})
+def validar_texto (value):
+    for i in value:
+        if i in '0123456789':
+            raise ValidationError("No se permiten números en este campo")
     
-def validar_categoria (value):
-    if value == 'No permitido':
-        # %( )s para poner un valor
-        raise ValidationError("No es una opcion permitida")
-    
-    
-def validar_nombre(value):
-    if value == "Comida":
-        raise ValidationError('%(value)s no es un texto permitido', params={'value': value})
+def validar_numero (value):
+    if re.match('^[0-9.]+$', value) == False:
+        raise ValidationError("Solo se permiten números y signos de puntuación en este campo")

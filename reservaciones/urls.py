@@ -10,4 +10,5 @@ router.register(r'reservaciones', views.ReservacionViewSet, basename="reservacio
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('reporte/cantidad/reservaciones', views.reporte_reservaciones),
 ]
